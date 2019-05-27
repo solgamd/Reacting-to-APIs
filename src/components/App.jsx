@@ -21,7 +21,7 @@ class App extends Component {
         this.setState({ loadPeople: true, loadFilms: false })
     }
 
-    render() {                                                              //Need to fix logo below
+    render() {                                                              
         if (this.state.loadFilms === false && this.state.loadPeople === false) {
             return (
                 <main className="App">
@@ -29,11 +29,11 @@ class App extends Component {
                     <div className="row justify-content-center">
                         <button
                             className="button m-3 shadow btn-outline-success"
-                            onClick={e => this.toggleLoadFilms(e)}              //e.target.value?
+                            onClick={e => this.toggleLoadFilms(e)}              
                         >Load Films</button>
                         <button
                             className="button m-3 shadow btn-outline-success"
-                            onClick={e => this.toggleLoadPeople(e)}              //e.target.value?
+                            onClick={e => this.toggleLoadPeople(e)}              
                         >Load People</button>
                     </div>
                 </main>
@@ -45,11 +45,11 @@ class App extends Component {
                     <div className="row justify-content-center">
                         <button
                             className="button m-3 shadow  bg-success"
-                            onClick={e => this.toggleLoadFilms(e)}              //e.target.value?
+                            onClick={e => this.toggleLoadFilms(e)}              
                         >Load Films</button>
                         <button
                             className="button m-3 shadow btn-outline-success"
-                            onClick={e => this.toggleLoadPeople(e)}              //e.target.value?
+                            onClick={e => this.toggleLoadPeople(e)}              
                         >Load People</button>
                     </div>
                     <FilmList />
@@ -62,11 +62,11 @@ class App extends Component {
                     <div className="row justify-content-center">
                         <button
                             className="button m-3 shadow btn-outline-success"
-                            onClick={e => this.toggleLoadFilms(e)}              //e.target.value?
+                            onClick={e => this.toggleLoadFilms(e)}              
                         >Load Films</button>
                         <button
                             className="button m-3 shadow bg-success"
-                            onClick={e => this.toggleLoadPeople(e)}              //e.target.value?
+                            onClick={e => this.toggleLoadPeople(e)}              
                         >Load People</button>
                     </div>
                     <PeopleList />

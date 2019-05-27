@@ -5,7 +5,7 @@ const PeopleCard = (props) => {
     return (
         <div className="col-3 mb-4">
             <div className="card h-100">
-                <h4 className="card-header bg-secondary text-white">{props.name}</h4>
+                <h4 className="card-header bg-warning text-white">{props.name}</h4>
                 <div className="card-body">
                     <p className="card-text">Age: {props.age}</p>
                     <p className="card-text">Gender: {props.gender}</p>
@@ -15,4 +15,5 @@ const PeopleCard = (props) => {
         </div>
     )
 }
+
 export default PeopleCard;

@@ -8,6 +8,7 @@ class FilmList extends React.Component {
             films: []
         }
     }
+
     componentDidMount() {
         fetch("https://ghibliapi.herokuapp.com/films")
             .then(res => res.json())

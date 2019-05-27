@@ -8,6 +8,7 @@ class PeopleList extends React.Component {
             people: []
         };
     }
+    
     componentDidMount() {
         fetch("https://ghibliapi.herokuapp.com/people")
             .then(res => res.json())
