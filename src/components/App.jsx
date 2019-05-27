@@ -8,33 +8,31 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            films: [],
-            people: [],
             loadFilms: false,
             loadPeople: false
         }
     }
 
     toggleLoadFilms() {
-        this.setState({ loadFilms: true })
+        this.setState({ loadFilms: true, loadPeople: false })
     }
 
     toggleLoadPeople() {
-        this.setState({ loadPeople: true })
+        this.setState({ loadPeople: true, loadFilms: false })
     }
 
     render() {                                                              //Need to fix logo below
-        if (this.state.loadFilms === false) {
+        if (this.state.loadFilms === false && this.state.loadPeople === false) {
             return (
                 <main className="App">
                     <Header />
                     <div className="row justify-content-center">
                         <button
-                            className="button m-3 shadow"
+                            className="button m-3 shadow btn-outline-success"
                             onClick={e => this.toggleLoadFilms(e)}              //e.target.value?
                         >Load Films</button>
                         <button
-                            className="button m-3 shadow"
+                            className="button m-3 shadow btn-outline-success"
                             onClick={e => this.toggleLoadPeople(e)}              //e.target.value?
                         >Load People</button>
                     </div>
@@ -46,11 +44,11 @@ class App extends Component {
                     <Header />
                     <div className="row justify-content-center">
                         <button
-                            className="button m-3 shadow"
+                            className="button m-3 shadow  bg-success"
                             onClick={e => this.toggleLoadFilms(e)}              //e.target.value?
                         >Load Films</button>
                         <button
-                            className="button m-3 shadow"
+                            className="button m-3 shadow btn-outline-success"
                             onClick={e => this.toggleLoadPeople(e)}              //e.target.value?
                         >Load People</button>
                     </div>
@@ -63,11 +61,11 @@ class App extends Component {
                     <Header />
                     <div className="row justify-content-center">
                         <button
-                            className="button m-3 shadow"
+                            className="button m-3 shadow btn-outline-success"
                             onClick={e => this.toggleLoadFilms(e)}              //e.target.value?
                         >Load Films</button>
                         <button
-                            className="button m-3 shadow"
+                            className="button m-3 shadow bg-success"
                             onClick={e => this.toggleLoadPeople(e)}              //e.target.value?
                         >Load People</button>
                     </div>
@@ -77,6 +75,5 @@ class App extends Component {
         }
     }
 }
-
 
 export default App;

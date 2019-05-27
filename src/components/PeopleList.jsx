@@ -4,9 +4,9 @@ import PeopleCard from './PeopleCard';
 class PeopleList extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { 
+        this.state = {
             people: []
-         };
+        };
     }
     componentDidMount() {
         fetch("https://ghibliapi.herokuapp.com/people")
@@ -15,25 +15,18 @@ class PeopleList extends React.Component {
             .catch(error => alert(error))
     }
 
-    render() { 
+    render() {
         return (
-            <section className="container">
-                <div className="row m-2">
-                    <div className="col">
-                    {this.state.people.map((person, i) => {
-                        return (
-                            <div key={i}>
-                                <PeopleCard name={person.name} age={person.age} gender={person.gender} />
-                            </div>
-                        );
-                    })}
-                    </div>
-                </div>
-            </section>
+            <div className="row m-2 d-flex">
+                {this.state.people.map((person, i) => {
+                    return (
+                        <PeopleCard key={i} name={person.name} age={person.age} gender={person.gender} id={person.id} />
+                    );
+                })}
+            </div>
         )
-        
     }
 }
- 
+
 export default PeopleList;
- 
+

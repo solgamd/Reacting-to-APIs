@@ -17,21 +17,14 @@ class FilmList extends React.Component {
 
     render() {
         return (
-            <section className="container">
-                <div className="row m-2">
-                    <div className="col">
-                    {this.state.films.map((film, i) => {
-                        return (
-                            <div key={i}>
-                                <FilmCard title={film.title} description={film.description} />
-                            </div>
-                        );
-                    })}
-                    </div>
-                </div>
-            </section>
+            <div className="row m-2">
+                {this.state.films.map((film, i) => {
+                    return (
+                        <FilmCard key={i} title={film.title} description={film.description} />
+                    );
+                })}
+            </div>
         )
-
     }
 }
 
