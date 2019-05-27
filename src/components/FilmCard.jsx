@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Card = (props) => {
+const FilmCard = (props) => {
     console.log(props);
 
         return (
@@ -8,10 +8,10 @@ const Card = (props) => {
                 <div className="card h-100">
                     <h4 className="card-header">{props.title}</h4>
                     <div className="card-body">
-                        <p className="card-text">{props.descrip}</p>
+                        <p className="card-text">{props.description}</p>
                     </div>
                 </div>
             </div>
         )
 }
-export default Card;
+export default FilmCard;

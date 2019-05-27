@@ -1,55 +1,140 @@
 import React, { Component } from 'react';
-// import 'isomorphic-fetch';
-// import 'es6-promise';    //Wouldn't compile; caused errors
-import Card from './Card';
+import FilmCard from './FilmCard';
+import PeopleCard from './PeopleCard';
+import './studio-ghibli-logo.svg';
 
 class App extends Component {
     constructor(props) {
         super(props);
-        this.state = { 
+        this.state = {
             films: [],
-            display: false
+            people: [],
+            loadFilms: false,
+            loadPeople: false
         }
     }
 
-    componentDidMount() {
+    componentDidMountFilms() {
         fetch("https://ghibliapi.herokuapp.com/films")
             .then(res => res.json())
             .then(films => this.setState({ films }))
             .catch(error => alert(error))
     }
 
-    renderNewArray() {
-        let newArray = this.state.films.map((film, i) => {
-            return <Card key={i} title={film.title} description={film.description} />
-        })
-        return newArray;
+    componentDidMountPeople() {
+        fetch("https://ghibliapi.herokuapp.com/people")
+            .then(res => res.json())
+            .then(people => this.setState({ people }))
+            .catch(error => alert(error))
     }
 
-    handleClick() {
-        return this.setState({ display: this.newArray })
+    // renderNewArray() {
+    //     let newArray = this.state.films.map((film, i) => {
+    //         return <Card key={i} title={film.title} description={film.description} />
+    //     })
+    //     return newArray;
+    // }
+
+    toggleLoadFilms() {
+        this.setState({ loadFilms: true })
     }
 
-    render() {
+    toggleLoadPeople() {
+        this.setState({ loadPeople: true })
+    }
 
-        return (
-            <div className="App">
-                <header className="App-header d-flex m-2 justify-content-center">
-                    <h1>Reacting to APIs</h1>
-                </header>
-                <div className="row d-flex justify-content-center">
-                    <button
-                        className="button m-5 shadow"
-                        onClick={e => this.handleClick(e)}  //e.target.value?
-                    >Load Films</button>
-                </div>
-                <section className="container">
-                    <div className="row m-2">
-                        {this.state.films.display}
+    render() {                                                              //Need to fix logo below
+        if (this.state.loadFilms === false) {
+            return (
+                <main className="App">
+                    <header className="App-header d-flex m-2 justify-content-center">
+                        <h1>Reacting to APIs</h1>
+                    </header>
+                    <div className="row d-flex flex-column justify-content-center align-items-center">
+                        <div>
+                            <img src={require("../studio-ghibli-logo.svg")} height="100" width="100" alt="Ghibli Logo" />
+                        </div>
+                        <div className="flex-row">
+                            <button
+                                className="button m-3 shadow"
+                                onClick={e => this.toggleLoadFilms(e)}              //e.target.value?
+                            >Load Films</button>
+                            <button
+                                className="button m-3 shadow"
+                                onClick={e => this.toggleLoadPeople(e)}              //e.target.value?
+                            >Load People</button>
+                        </div>
                     </div>
-                </section>
-            </div>
-        )
+                    <section className="container">
+                        <div className="row m-2">
+
+
+                        </div>
+                    </section>
+                </main>
+            )
+        } else if (this.state.loadFilms === true) {
+            return (
+                <main className="App">
+                    <header className="App-header d-flex m-2 justify-content-center">
+                        <h1>Reacting to APIs</h1>
+                    </header>
+                    <div className="row d-flex flex-column justify-content-center align-items-center">
+                        <div>
+                            <img src={require("../studio-ghibli-logo.svg")} height="100" width="100" alt="Ghibli Logo" />
+                        </div>
+                        <div className="flex-row">
+                            <button
+                                className="button m-3 shadow"
+                                onClick={e => this.toggleLoadFilms(e)}              //e.target.value?
+                            >Load Films</button>
+                            <button
+                                className="button m-3 shadow"
+                                onClick={e => this.toggleLoadPeople(e)}              //e.target.value?
+                            >Load People</button>
+                        </div>
+                    </div>
+                    <section className="container">
+                        <div className="row m-2">
+                            {this.state.films.map((film, i) => {
+                                return <FilmCard key={i} title={film.title} description={film.description} />
+                            })}
+                        </div>
+                    </section>
+                </main>
+
+            )
+        } else if (this.state.loadPeople === true) {
+            return (
+                <main className="App">
+                    <header className="App-header d-flex m-2 justify-content-center">
+                        <h1>Reacting to APIs</h1>
+                    </header>
+                    <div className="row d-flex flex-column justify-content-center align-items-center">
+                        <div>
+                            <img src={require("../studio-ghibli-logo.svg")} height="100" width="100" alt="Ghibli Logo" />
+                        </div>
+                        <div className="flex-row">
+                            <button
+                                className="button m-3 shadow"
+                                onClick={e => this.toggleLoadFilms(e)}              //e.target.value?
+                            >Load Films</button>
+                            <button
+                                className="button m-3 shadow"
+                                onClick={e => this.toggleLoadPeople(e)}              //e.target.value?
+                            >Load People</button>
+                        </div>
+                    </div>
+                    <section className="container">
+                        <div className="row m-2">
+                            {this.state.people.map((person, i) => {
+                                return <PeopleCard key={i} Name={person.name} Age={person.age} />
+                            })}
+                        </div>
+                    </section>
+                </main>
+            )
+        }
     }
 }
 
